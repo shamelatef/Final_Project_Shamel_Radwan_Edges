@@ -252,11 +252,8 @@ void error(void) {
 
 		Buzzer_on();
 
-	} else if (g_n == 6) //60 seconds
-			{
+	} else if (g_n == 61){
 		Buzzer_off();
-		//UART_sendByte('g');
-		//_delay_ms(100);
 		g_error = 3;
 		g_n = 0;
 	}
@@ -273,28 +270,20 @@ void openDoor(void) {
 
 	if (g_tick == 1) {
 		DcMotor_Rotate(CW, 100);
-		//UART_sendByte('1'); // "DOor unlocking message"
-		_delay_ms(100);
 
 	}
 
-	else if (g_tick == 2)			//15 seconds
-			{
+	else if (g_tick == 16){
 		DcMotor_Rotate(ACW, 0);
-		//UART_sendByte('2'); // "DOor on hold"
 
 	}
 
-	else if (g_tick == 3) {			// holding for 3 seconds		{
-
+	else if (g_tick == 19) {
 		DcMotor_Rotate(ACW, 100);
-		//UART_sendByte('3'); // "DOor locking"
 
-	} else if (g_tick == 4)			//15 seconds
-			{
+	} else if (g_tick == 34){
 
 		DcMotor_Rotate(ACW, 0);
-		//	UART_sendByte('4');// first prompt =0
 		g_open_door = 3;
 		g_tick = 0;
 

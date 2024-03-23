@@ -74,8 +74,7 @@ int main(void) {
 
 	/*interrupt enable For Timer1*/
 	SREG |= (1 << 7);
-	Timer1_ConfigType Timer1_Config = { 0, TICKS_PER_SECOND, PRESCALER_256,
-			CTC_OCR1A };
+	Timer1_ConfigType Timer1_Config = { 0, TICKS_PER_SECOND, PRESCALER_256,CTC_OCR1A };
 
 
 	while (1) {
@@ -125,7 +124,6 @@ int main(void) {
 				_delay_ms(500);
 
 			}
-//			_delay_ms(500);
 
 			for (i = 0; i < PASSWORD_SIZE; i++) {
 				UART_sendByte(password_1[i]);
@@ -336,7 +334,7 @@ void errorMessage(void) {
 
 	}
 
-	else if (g_n == 6) {
+	else if (g_n == 61) {
 		g_error = 3;
 		g_n = 0;
 	}
@@ -357,19 +355,19 @@ void openDoorMessages(void) {
 		LCD_displayString("Door Unlocking");
 	}
 
-	else if (g_tick == 2) {
+	else if (g_tick == 16) {
 		LCD_clearScreen();
 		LCD_displayString("Motor on Hold");
 
 	}
 
-	else if (g_tick == 3) {
+	else if (g_tick == 19) {
 		LCD_clearScreen();
 		LCD_displayString("Door Locking");
 
 	}
 
-	else if (g_tick == 4) {
+	else if (g_tick == 34) {
 		g_open_door = 3;
 		g_tick = 0;
 	}
